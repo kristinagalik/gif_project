@@ -1,0 +1,55 @@
+
+<!-- New Billing Page -->
+
+{% extends 'databank_system/base.html' %}
+{% load static %}
+
+
+{% block title_block %}
+    <link rel="stylesheet" href="{% static 'css/new_billing.css' %}">
+{% endblock %}
+
+{% block body_block %}
+    <div class="box__wrap">
+        <form class="box__form" method="post" action="{% url 'databank_system:new_billing' %}">
+
+            {% csrf_token %}
+
+            <div class="box__header">New Billing</div>
+
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text"> Date (d/m/y): </div>
+                <input class="box__input" type="text" name="Date">
+            </div>
+
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text"> Worker: </div>
+                <input class="box__input" type="text" name="Worker">
+            </div>
+
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text"> Budget Code: </div>
+                <input class="box__input" type="text" name="BudgetCode">
+            </div>
+
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text"> Project No.: </div>
+                <input class="box__input" type="text" name="Project">
+            </div>
+
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text"> Unit: </div>
+                <input class="box__input" type="text" name="Unit">
+            </div>
+
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text"> Cost (£): </div>
+                <input class="box__input" type="text" name="Cost">
+            </div>
+
+            <div class="box__button-wrapper">
+                <input class="box__button" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+{% endblock %}

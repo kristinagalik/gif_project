@@ -1,0 +1,59 @@
+
+<!-- Login Page -->
+
+{% extends 'databank_system/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+{% endblock %}
+
+{% block body_block %}
+
+<div class="login-background">
+    <div class="login-box">
+        <div class="login-box__logo-background-blue">
+            <div class="login-box__logo-background-white">
+                <img class="login-box__logo-img" src="{% static 'images/logo.png' %}" alt="GIF Logo">
+            </div>
+        </div>
+        <div class="login-box__wrap">
+            <form id="login_form" method="post" action="{% url 'databank_system:user_login' %}">
+
+                {% csrf_token %}
+
+                <div class="login-box__input-box">
+                    <div class="login-box__img-background">
+                        <div class="login-box__img">
+                            <span class="iconify" data-icon="carbon:user-filled" style="color: #f8f8f8; font-size: 42px;"></span>
+                        </div>
+                    </div>
+                    <div class="login-box__input-wrap">
+                        <input class="login-box__input" type="text" placeholder="Username" name="username" value="" size="50"/>
+                    </div>
+                </div>
+                <div class="login-box__input-box login-box__input-box__password">
+                    <div class="login-box__img-background">
+                        <div class="login-box__img">
+                            <span class="iconify" data-icon="bi:key-fill" style="color: #f8f8f8; font-size: 42px;"></span>
+                        </div>
+                    </div>
+                    <div class="login-box__input-wrap">
+                        <input class="login-box__input" type="password" placeholder="Password" name="password" value="" size="50"/>
+                    </div>
+                </div>
+                <div class="login-box__remember-me">
+                    <input type="checkbox" id="remember-me" name="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <div>
+                    <button class="login-box__login-button">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

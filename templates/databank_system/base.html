@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+    <head>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        {% block title_block %}{% endblock %}
+    </head>
+
+    <body>
+        <header>
+            <nav>
+
+                <!-- MENU -->
+
+                {% if user.is_authenticated %}
+
+                <div class="nav">
+                    <ul>
+                        <img class="nav-logo" src="{% static 'images/logo.png' %}" alt="GIF Logo">
+                        <div class="links">
+                            <li class="nav-item"><a class="nav-link" href="{% url 'databank_system:home_page' %}">Home Page</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'databank_system:all_records' %}">All Records</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'databank_system:new_record' %}">New Record</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'databank_system:all_billings' %}">All Billings</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'databank_system:new_billing' %}">New Billing</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'databank_system:user_logout' %}">Log Out</a></li>
+                        </div>
+                    </ul>
+                </div>
+
+                {% endif %}
+            </nav>
+        </header>
+        {% block body_block %}{% endblock %}
+    </body>
+
+</html>

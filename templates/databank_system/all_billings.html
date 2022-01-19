@@ -1,0 +1,73 @@
+
+<!-- All Billings Page -->
+
+{% extends 'databank_system/base.html' %}
+{% load static %}
+
+
+{% block title_block %}
+<link rel="stylesheet" href="{% static 'css/all_billing.css' %}">
+{% endblock %}
+
+
+{% block body_block %}
+   <div class="box__out-row">
+       <div class="box_out">Sort by:</div>
+           <div class="box_out">
+              <input type="checkbox" id="Budget Code" name="Budget Code">
+              <label for="Budget Code">Budget Code</label>
+           </div>
+           <div class="box_out">
+              <input type="checkbox" id="Worker" name="Worker">
+              <label for="Worker">Worker</label>
+           </div>
+       </div>
+   </div>
+
+
+    {% if billings %}
+
+    
+        
+        {% for billing in billings %}
+            
+            
+        <br>   
+          
+            <div class="box__wrap">
+                   
+                <form class="box__form">
+                        
+                        <div class="box__row">
+                            <!--Placeholder UI-->      
+                            <div class="box__row__element">
+                                Date: {{billing.Date}}   
+                            </div>
+                            <div class="box__row__element">
+                                Worker: {{billing.Worker}}   
+                            </div>
+                            <div class="box__row__element">
+                                Budget Code: {{billing.BudgetCode}}
+                            </div>
+                            <div class="box__row__element">
+                                Project No: {{billing.Project}}
+                            </div>
+                            <div class="box__row__element">
+                                Unit: {{billing.Unit}}
+                            </div>
+                            <div class="box__row__element">
+                                Cost: £{{billing.Cost}}
+                            </div>
+                        </div>
+
+                        
+                            
+                        
+                </form>
+            </div>
+            
+        {% endfor %}
+    {% else %}
+        <div> There are no billings present.</div>
+    {% endif %}
+{% endblock %}

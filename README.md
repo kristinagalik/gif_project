@@ -1,1 +1,2 @@
-# gif_project_demo
+# gif_project
+

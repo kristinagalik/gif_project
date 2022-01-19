@@ -1,0 +1,31 @@
+
+.box__out-row{
+    margin-left: 10px;
+    display: flex;
+    color: white;
+}
+.box__wrap {
+    width: 94%;
+    height: 250px;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4%;
+    bottom: 0;
+    background-color: #f4f4f4;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+
+box__row{
+    margin-top: 30px;
+    display: flex;
+}
+.box__row__element {
+    margin-right: 30px;
+    width: 300px;
+}
+.box__form {
+    height: 100%;
+}
