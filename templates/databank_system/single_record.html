@@ -1,0 +1,130 @@
+<!-- Single Record Page -->
+
+{% extends 'databank_system/base.html' %}
+<!--{% load static %}-->
+
+{% block title_block %}
+<link rel="stylesheet" href="{% static 'css/single_record.css' %}">
+{% endblock %}
+
+{% block body_block %}
+<div class="box">
+    {% if record %}
+    <div class="box__wrap">
+        <div class="box__single-record">
+            <div class="box__header">
+                Record
+            </div>
+            <div class="box__single-record__element">
+                <div>Date:</div>
+                <div>{{ record.date }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>Worker:</div>
+                <div>{{ record.worker }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>Budget Code:</div>
+                <div>{{ record.budget_code }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>Project number:</div>
+                <div>{{ record.project }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>Email:</div>
+                <div>{{ record.email }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>Contact tel. number:</div>
+                <div>{{ record.contact_tel_no }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>Specimen/Procedure:</div>
+                <div>{{ record.procedure }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>Chemical fixation:</div>
+                <div>{{ record.chemical_fixation }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>Neg staining:</div>
+                <div>{{ record.negstaining }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>Cryofixation:</div>
+                <div>{{ record.cryofixation }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>TEM embedding schedule:</div>
+                <div>{{ record.tem_embedding_schedule }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>SEM:</div>
+                <div>{{ record.sem }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>Dehydration:</div>
+                <div>{{ record.dehydration }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>SEM mount:</div>
+                <div>{{ record.sem_mount }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>FD:</div>
+                <div>{{ record.fd }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>CPD:</div>
+                <div>{{ record.cpd }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>Resin:</div>
+                <div>{{ record.resin }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>SEM cost:</div>
+                <div>{{ record.sem_cost }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>Temp/Time:</div>
+                <div>{{ record.temp_time }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>Immunolabeling:</div>
+                <div>{{ record.immunolabeling }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>1° Ab/dilution/time:</div>
+                <div>{{ record.ab_dilution_time }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>2° Ab-gold/dilution/time:</div>
+                <div>{{ record.ab_gold_dilution_time }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>Contrast staining:</div>
+                <div>{{ record.contrast_staining }}</div>
+            </div>
+            <div class="box__single-record__element">
+                <div>Comment/Results:</div>
+                <div>{{ record.comment }}</div>
+            </div>
+        </div>
+        <div class="box__single-record__buttons">
+            <a class="box__single-record__button"
+               href="">
+                <div class="text-inside-button">Edit</div>
+            </a>
+            <form action="{% url 'databank_system:delete_record' record.id %}" method="POST">
+                {% csrf_token %}
+                <button class="box__single-record__button">Delete</button>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="box__no-element">This record doesn't exist.</div>
+    {% endif %}
+</div>
+{% endblock %}

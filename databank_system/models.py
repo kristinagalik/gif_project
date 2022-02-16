@@ -3,54 +3,54 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
 
-class NewBilling(models.Model):
+class Billing(models.Model):
     id = models.AutoField(primary_key=True)
-    Date = models.CharField(null=True, blank=True, max_length=50)
-    Worker = models.CharField(null=True, blank=True, max_length=50)
-    BudgetCode = models.CharField(null=True, blank=True, max_length=50)
-    Project = models.CharField(null=True, blank=True, max_length=50)
-    Unit = models.CharField(null=True, blank=True, max_length=50)
-    Cost = models.CharField(null=True, blank=True, max_length=50)
+    date = models.DateField(null=True, blank=True)
+    worker = models.CharField(null=True, blank=True, max_length=50)
+    budget_code = models.CharField(null=True, blank=True, max_length=50)
+    project = models.CharField(null=True, blank=True, max_length=50)
+    unit = models.CharField(null=True, blank=True, max_length=50)
+    cost = models.CharField(null=True, blank=True, max_length=50)
 
     def save(self, *args, **kwargs):
-        super(NewBilling, self).save(*args, **kwargs)
+        super(Billing, self).save(*args, **kwargs)
 
-    def _str_(self):
-        return self.Project
+    def __str__(self):
+        return str(self.id)
 
 
-class NewRecord(models.Model):
+class Record(models.Model):
     id = models.AutoField(primary_key=True)
-    Date = models.CharField(null=True, blank=True, max_length=50)
-    Worker = models.CharField(null=True, blank=True, max_length=50)
-    Project = models.CharField(null=True, blank=True, max_length=50)
-    BudgetCode = models.CharField(null=True, blank=True, max_length=50)
-    Email = models.CharField(null=True, blank=True, max_length=50)
-    ContactTelNo = models.CharField(null=True, blank=True, max_length=50)
-    Procedure = models.CharField(null=True, blank=True, max_length=100)
-    ChemicalFixation = models.CharField(null=True, blank=True, max_length=50)
-    Negstaining = models.CharField(null=True, blank=True, max_length=50)
-    Cryofixation = models.CharField(null=True, blank=True, max_length=50)
-    TEMembeddingSchedule = models.CharField(null=True, blank=True, max_length=50)
-    SEM = models.CharField(null=True, blank=True, max_length=50)
-    Dehydration = models.CharField(null=True, blank=True, max_length=50)
-    SEMMount = models.CharField(null=True, blank=True, max_length=50)
-    FD = models.CharField(null=True, blank=True, max_length=50)
-    CPD = models.CharField(null=True, blank=True, max_length=50)
-    Resin = models.CharField(null=True, blank=True, max_length=50)
-    SEMCost = models.CharField(null=True, blank=True, max_length=50)
-    TempTime = models.CharField(null=True, blank=True, max_length=50)
-    Immunolabeling = models.CharField(null=True, blank=True, max_length=50)
-    AbDilutionTime = models.CharField(null=True, blank=True, max_length=50)
-    AbGoldDilutionTime = models.CharField(null=True, blank=True, max_length=50)
-    ContrastStaining = models.CharField(null=True, blank=True, max_length=50)
-    Comment = models.CharField(null=True, blank=True, max_length=1000)
+    date = models.DateField(null=True, blank=True)
+    worker = models.CharField(null=True, blank=True, max_length=50)
+    project = models.CharField(null=True, blank=True, max_length=50)
+    budget_code = models.CharField(null=True, blank=True, max_length=50)
+    email = models.CharField(null=True, blank=True, max_length=50)
+    contact_tel_no = models.CharField(null=True, blank=True, max_length=50)
+    procedure = models.CharField(null=True, blank=True, max_length=100)
+    chemical_fixation = models.CharField(null=True, blank=True, max_length=50)
+    negstaining = models.CharField(null=True, blank=True, max_length=50)
+    cryofixation = models.CharField(null=True, blank=True, max_length=50)
+    tem_embedding_schedule = models.CharField(null=True, blank=True, max_length=50)
+    sem = models.CharField(null=True, blank=True, max_length=50)
+    dehydration = models.CharField(null=True, blank=True, max_length=50)
+    sem_mount = models.CharField(null=True, blank=True, max_length=50)
+    fd = models.CharField(null=True, blank=True, max_length=50)
+    cpd = models.CharField(null=True, blank=True, max_length=50)
+    resin = models.CharField(null=True, blank=True, max_length=50)
+    sem_cost = models.CharField(null=True, blank=True, max_length=50)
+    temp_time = models.CharField(null=True, blank=True, max_length=50)
+    immunolabeling = models.CharField(null=True, blank=True, max_length=50)
+    ab_dilution_time = models.CharField(null=True, blank=True, max_length=50)
+    ab_gold_dilution_time = models.CharField(null=True, blank=True, max_length=50)
+    contrast_staining = models.CharField(null=True, blank=True, max_length=50)
+    comment = models.CharField(null=True, blank=True, max_length=1000)
 
     def save(self, *args, **kwargs):
-        super(NewRecord, self).save(*args, **kwargs)
+        super(Record, self).save(*args, **kwargs)
 
-    def _str_(self):
-        return self.BudgetCode
+    def __str__(self):
+        return str(self.id)
 
 
 class UserInfo(models.Model):
@@ -58,5 +58,5 @@ class UserInfo(models.Model):
     username = models.CharField(max_length=50, unique=True, blank=False, primary_key=True)
     email = models.CharField(max_length=50, unique=True, blank=False)
 
-    def _str_(self):
+    def __str__(self):
         return self.user.username

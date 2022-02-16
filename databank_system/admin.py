@@ -1,22 +1,22 @@
 from django.contrib import admin
-from databank_system.models import UserInfo, NewBilling, NewRecord
+from databank_system.models import UserInfo, Billing, Record
 
 
 admin.site.register(UserInfo)
 
 
-class NewBillingAdmin(admin.ModelAdmin):
-    list_display = ('Date', 'Worker', 'BudgetCode', 'Project', 'Unit', 'Cost')
+class BillingAdmin(admin.ModelAdmin):
+    list_display = ('date', 'worker', 'budget_code', 'project', 'unit', 'cost')
 
 
-admin.site.register(NewBilling, NewBillingAdmin)
+admin.site.register(Billing, BillingAdmin)
 
 
-class NewRecordAdmin(admin.ModelAdmin):
-    list_display = ('Date', 'Worker', 'Project', 'BudgetCode', 'Email', 'ContactTelNo', 'Procedure', 'ChemicalFixation',
-                    'Negstaining', 'Cryofixation', 'TEMembeddingSchedule', 'SEM', 'Dehydration', 'SEMMount', 'FD', 'CPD',
-                    'Resin', 'SEMCost', 'TempTime', 'Immunolabeling', 'AbDilutionTime', 'AbGoldDilutionTime',
-                    'ContrastStaining', 'Comment')
+class RecordAdmin(admin.ModelAdmin):
+    list_display = ('date', 'worker', 'project', 'budget_code', 'email', 'contact_tel_no', 'procedure', 'chemical_fixation',
+                    'negstaining', 'cryofixation', 'tem_embedding_schedule', 'sem', 'dehydration', 'sem_mount', 'fd', 'cpd',
+                    'resin', 'sem_cost', 'temp_time', 'immunolabeling', 'ab_dilution_time', 'ab_gold_dilution_time',
+                    'contrast_staining', 'comment')
 
 
-admin.site.register(NewRecord, NewRecordAdmin)
+admin.site.register(Record, RecordAdmin)

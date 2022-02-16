@@ -84,3 +84,11 @@
 .box__form {
     height: 100%;
 }
+
+.nav-item__new-record {
+   background-color: #177DC0;
+}
+
+#nav-item__new-record {
+   color: #f4f4f4;
+}

@@ -1,5 +1,14 @@
+
+.nav-item__home-page {
+   background-color: #177DC0;
+}
+
+#nav-item__home-page {
+   color: #f4f4f4;
+}
+
 .box {
-   padding: 16px;
+   padding: 0px 16px 16px 16px;
 }
 
 .box__order-by{
@@ -37,7 +46,7 @@
    cursor: pointer;
 }
 
-.box__single-record {
+.box__single-object {
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
@@ -46,35 +55,30 @@
     background-color: #f4f4f4;
     padding: 32px;
     border-radius: 8px;
+    font-size: 24px;
 }
 
-.box__single-record__element {
-   width: 200px;
+.box__single-object__element {
    display: flex;
-   flex-direction: column;
+   flex-direction: row;
    justify-content: space-between;
 }
 
-.box__single-record__element-lower {
-   font-size: 24px;
-   margin-top:10px;
-}
-
-.box__single-record__buttons {
+.box__single-object__buttons {
    font-size: 16px;
-   padding-top: 21px;
+   padding-top: 4px;
 }
 
-.box__single-record__buttons-first {
+.box__single-object__buttons-first {
    margin-right: 8px;
 }
 
-.box__single-record__buttons a {
+.box__single-object__buttons a {
   color: #177DC0;
   text-decoration: none;
 }
 
-.box__single-record__buttons a:hover {
+.box__single-object__buttons a:hover {
   text-decoration: underline;
 }
 
@@ -83,10 +87,22 @@
    padding-top:20px;
 }
 
-.nav-item__all-records {
+.nav-item__all-objects {
    background-color: #177DC0;
 }
 
-#nav-item__all-records {
+#nav-item__all-objects {
    color: #f4f4f4;
+}
+
+.blue-name {
+   color: #177DC0;
+}
+
+.box__single-object__left {
+   display: flex;
+}
+
+.box__single-object__element-date {
+   padding-right: 30px;
 }

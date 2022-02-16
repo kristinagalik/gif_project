@@ -1,11 +1,56 @@
-
 <!-- Home Page -->
 
 {% extends 'databank_system/base.html' %}
 <!--{% load static %}-->
+{% load template_tags %}
 
 {% block title_block %}
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
 {% endblock %}
 
 {% block body_block %}
+<div class="box">
+    <div class="box__single-object">
+        Recent Activities
+    </div>
+    {% if objects %}
+    {% for object in objects %}
+    <div class="box__single-object">
+        {% if object|get_class == 'Billing' %}
+        <div class="box__single-object__left">
+            <div class="box__single-object__element">
+                <div class="box__single-object__element-date">{{object.date}}</div>
+            </div>
+            <div class="box__single-object__element">
+                <div class="box__single-object__element-text">
+                    New billing has been made by&nbsp;
+                </div>
+                <div class="blue-name">{{object.worker}}</div>
+            </div>
+        </div>
+        <div class="box__single-object__buttons">
+            <a class="box__single-object__buttons-first" href="{% url 'databank_system:single_billing' object.id %}">View</a>
+        </div>
+        {% else %}
+        <div class="box__single-object__left">
+            <div class="box__single-object__element">
+                <div class="box__single-object__element-date">{{object.date}}</div>
+            </div>
+            <div class="box__single-object__element">
+                <div class="box__single-object__element-text">
+                    New record has been made by&nbsp;
+                </div>
+                <div class="blue-name">{{object.worker}}</div>
+            </div>
+        </div>
+        <div class="box__single-object__buttons">
+            <a class="box__single-object__buttons-first"  href="{% url 'databank_system:single_record' object.id %}">View</a>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="box__no-elements"> There are no activities present.</div>
+    {% endif %}
+</div>
 {% endblock %}

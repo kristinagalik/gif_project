@@ -27,7 +27,7 @@ SECRET_KEY = '#qb&14f=5%_$ymqn@e%lcv6&1t&ot29)!f)5l7wl0r-4$g(uty'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['gifprojectdemo.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition

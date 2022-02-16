@@ -1,31 +1,92 @@
+.box {
+   padding: 16px;
+}
 
-.box__out-row{
-    margin-left: 10px;
+.box__order-by{
     display: flex;
     color: white;
 }
-.box__wrap {
-    width: 94%;
-    height: 250px;
+
+.box__order-by__element{
+   margin-left: 10px;
+}
+
+.box__order-by__text{
+   color: white;
+   text-decoration: none;
+   border: none;
+   border-radius: 8px;
+   padding: 7px 0px;
+   text-align: center;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+}
+
+.box__order-by__element_link {
+   color: black;
+   text-decoration: none;
+   background-color: white;
+   border: none;
+   border-radius: 8px;
+   padding: 7px 32px;
+   text-align: center;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+   cursor: pointer;
+}
+
+.box__single-billing {
+    display: flex;
+    justify-content: space-between;
     box-sizing: border-box;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 4%;
+    margin-top: 16px;
     bottom: 0;
     background-color: #f4f4f4;
-    padding: 30px;
+    padding: 32px;
     border-radius: 8px;
 }
 
+.box__single-billing__element {
+   width: 200px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
 
-box__row{
-    margin-top: 30px;
-    display: flex;
+.box__single-billing__element-lower {
+   font-size: 24px;
+   margin-top:10px;
 }
-.box__row__element {
-    margin-right: 30px;
-    width: 300px;
+
+.box__single-billing__buttons {
+   font-size: 16px;
+   padding-top: 21px;
 }
-.box__form {
-    height: 100%;
+
+.box__single-billing__buttons-first {
+   margin-right: 8px;
+}
+
+.box__single-billing__buttons a {
+  color: #177DC0;
+  text-decoration: none;
+}
+
+.box__single-billing__buttons a:hover {
+  text-decoration: underline;
+}
+
+.box__no-elements {
+   color: white;
+   padding-top:20px;
+}
+
+.nav-item__all-billings {
+   background-color: #177DC0;
+}
+
+#nav-item__all-billings {
+   color: #f4f4f4;
 }

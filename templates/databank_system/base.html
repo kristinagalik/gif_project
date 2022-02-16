@@ -21,11 +21,11 @@
                     <ul>
                         <img class="nav-logo" src="{% static 'images/logo.png' %}" alt="GIF Logo">
                         <div class="links">
-                            <li class="nav-item"><a class="nav-link" href="{% url 'databank_system:home_page' %}">Home Page</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'databank_system:all_records' %}">All Records</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'databank_system:new_record' %}">New Record</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'databank_system:all_billings' %}">All Billings</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'databank_system:new_billing' %}">New Billing</a></li>
+                            <li class="nav-item nav-item__home-page"><a class="nav-link" id="nav-item__home-page" href="{% url 'databank_system:home_page' %}">Home Page</a></li>
+                            <li class="nav-item nav-item__all-records"><a class="nav-link" id="nav-item__all-records" href="{% url 'databank_system:all_records' 'date' %}">All Records</a></li>
+                            <li class="nav-item nav-item__new-record"><a class="nav-link" id="nav-item__new-record" href="{% url 'databank_system:new_record' %}">New Record</a></li>
+                            <li class="nav-item nav-item__all-billings"><a class="nav-link" id="nav-item__all-billings" href="{% url 'databank_system:all_billings' 'date' %}">All Billings</a></li>
+                            <li class="nav-item nav-item__new-billing"><a class="nav-link" id="nav-item__new-billing" href="{% url 'databank_system:new_billing' %}">New Billing</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'databank_system:user_logout' %}">Log Out</a></li>
                         </div>
                     </ul>

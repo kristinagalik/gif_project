@@ -48,3 +48,8 @@ body {
     padding: 0;
     height: 40px;
 }
+
+.nav ul .nav-logo {
+    margin-top: 3px;
+    margin-left: 3px;
+}

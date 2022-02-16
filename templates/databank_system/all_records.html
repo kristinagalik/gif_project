@@ -1,121 +1,54 @@
-
 <!-- All Records Page -->
 
 {% extends 'databank_system/base.html' %}
 {% load static %}
 
 {% block title_block %}
-<link rel="stylesheet" href="{% static 'css/all_record.css' %}">
+<link rel="stylesheet" href="{% static 'css/all_records.css' %}">
 {% endblock %}
 
 {% block body_block %}
-<div class="box__out-row">
-     <div class="box_out">Sort by:</div>
-          <div class="box__Project No">
-              <input type="checkbox" id="Project No" name="Project No">
-              <label for="Project No">Project No</label>
-          </div>
-          <div class="box__Worker">
-              <input type="checkbox" id="Worker" name="Worker">
-              <label for="Worker">Worker</label>
-          </div>
-    </div>
-</div>
-
-{% if records %}       
-    {% for record in records %}
-     
-    <br>   
-    
-        <div class="box__wrap">
-            
-            <form class="box__form">
-                    
-                    <div class="box__row">
-                        <!--Placeholder UI-->  
-                        <div class="box__row__element">
-                            Date: {{record.Date}}   
-                        </div>
-                        <div class="box__row__element">
-                            Worker: {{record.Worker}}   
-                        </div>
-                        <div class="box__row__element">
-                            Budget Code: {{record.BudgetCode}}
-                        </div>
-                        <div class="box__row__element">
-                            Project No: {{record.Project}}
-                        </div>
-                        <div class="box__row__element">
-                            Email: {{record.Email}}
-                        </div>
-                        <div class="box__row__element">
-                            ContactTelNo: {{record.ContactTelNo}}
-                        </div>
-                        <div class="box__row__element">
-                            Procedure: {{record.Procedure}}
-                        </div>
-                        <div class="box__row__element">
-                            Chemical Fixation: {{record.ChemicalFixation}}
-                        </div>
-                        <div class="box__row__element">
-                            Negstaining: {{record.Negstaining}}
-                        </div>
-                        <div class="box__row__element">
-                            Cryofixation: {{record.Cryofixation}}
-                        </div>
-                        <div class="box__row__element">
-                            TEM Embedding Schedule: {{record.TEMembeddingSchedule}}
-                        </div>
-                        <div class="box__row__element">
-                            SEM: {{record.SEM}}
-                        </div>
-                        <div class="box__row__element">
-                            Dehydration: {{record.Dehydration}}
-                        </div>
-                        <div class="box__row__element">
-                            SEMMount: {{record.SEMMount}}
-                        </div>
-                        <div class="box__row__element">
-                           FD: {{record.FD}}
-                        </div>
-                        <div class="box__row__element">
-                            CPD: {{record.CPD}}
-                        </div>
-                        <div class="box__row__element">
-                            Resin: {{record.Resin}}
-                        </div>
-                        <div class="box__row__element">
-                            SEMCost: {{record.SEMCost}}
-                        </div>
-                        <div class="box__row__element">
-                            Temperature Time: {{record.TempTime}}
-                        </div>
-                        <div class="box__row__element">
-                            Immunolabeling: {{record.Immunolabeling}}
-                        </div>
-                        <div class="box__row__element">
-                            AbDilutionTime: {{record.AbDilutionTime}}
-                        </div>
-                        <div class="box__row__element">
-                            AbGoldDilutionTime: {{record.AbGoldDilutionTime}}
-                        </div>
-                        <div class="box__row__element">
-                            Contrast Staining: {{record.ContrastStaining}}
-                        </div>
-                        <div class="box__row__element">
-                            Comment: {{record.Comment}}
-                        </div>
-                        
-                    </div>
-
-                    
-                        
-                    
-            </form>
+<div class="box">
+    <div class="box__order-by">
+        <div class="box__order-by__text">Sort by:</div>
+        <div class="box__order-by__element">
+            <a class="box__order-by__element_link" href="{% url 'databank_system:all_records' 'date' %}">Date</a>
         </div>
-        
+        <div class="box__order-by__element">
+            <a class="box__order-by__element_link" href="{% url 'databank_system:all_records' 'project' %}">Project
+                No.</a>
+        </div>
+        <div class="box__order-by__element">
+            <a class="box__order-by__element_link" href="{% url 'databank_system:all_records' 'worker' %}">Worker</a>
+        </div>
+    </div>
+
+    {% if records %}
+    {% for record in records %}
+    <div class="box__single-record">
+        <div class="box__single-record__element">
+            <div class="box__single-record__element-upper">Project number</div>
+            <div class="box__single-record__element-lower">{{record.project}}</div>
+        </div>
+
+        <div class="box__single-record__element">
+            <div class="box__single-record__element-upper">Date</div>
+            <div class="box__single-record__element-lower">{{record.date}}</div>
+        </div>
+
+        <div class="box__single-record__element">
+            <div class="box__single-record__element-upper">Worker</div>
+            <div class="box__single-record__element-lower">{{record.worker}}</div>
+        </div>
+
+        <div class="box__single-record__buttons">
+            <a class="box__single-record__buttons-first" href="{% url 'databank_system:single_record' record.id %}">View</a>
+            <a href="">Edit</a>
+        </div>
+    </div>
     {% endfor %}
-{% else %}
-<div> There are no records present.</div>
-{% endif %}
+    {% else %}
+    <div class="box__no-elements"> There are no records present.</div>
+    {% endif %}
+</div>
 {% endblock %}

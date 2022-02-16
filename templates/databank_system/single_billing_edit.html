@@ -1,0 +1,52 @@
+<!-- Single Billing Edit Page -->
+
+{% extends 'databank_system/base.html' %}
+<!--{% load static %}-->
+
+{% block title_block %}
+<link rel="stylesheet" href="{% static 'css/single_billing_edit.css' %}">
+{% endblock %}
+
+{% block body_block %}
+{% if billing %}
+<div class="box__wrap">
+    <form class="box__form" method="post" action="{% url 'databank_system:single_billing_edit' billing.id %}">
+        {% csrf_token %}
+
+        <div class="box__header">Edit Billing</div>
+
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> Date (d/m/y):</div>
+            <input class="box__input" type="date" name="date" value="{{billing.date}}">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text">Worker:</div>
+            <input class="box__input" type="text" name="Worker" value="{{billing.worker}}">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text">Budget Code:</div>
+            <input class="box__input" type="text" name="Budget Code" value="{{billing.budget_code}}">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text">Project number:</div>
+            <input class="box__input" type="text" name="Project number" value="{{billing.project}}">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text">Unit:</div>
+            <input class="box__input" type="text" name="Unit" value="{{billing.unit}}">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text">Cost (£):</div>
+            <input class="box__input" type="text" name="Cost (£)" value="{{billing.cost}}">
+        </div>
+        <div class="box__single-billing__buttons">
+            <div class="box__single-billing__button">
+                <input class="box__button" type="submit" value="Save">
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endif %}
+
+{% endblock %}

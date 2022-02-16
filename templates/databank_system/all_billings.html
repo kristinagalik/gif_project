@@ -1,73 +1,54 @@
-
 <!-- All Billings Page -->
 
 {% extends 'databank_system/base.html' %}
 {% load static %}
 
-
 {% block title_block %}
-<link rel="stylesheet" href="{% static 'css/all_billing.css' %}">
+<link rel="stylesheet" href="{% static 'css/all_billings.css' %}">
 {% endblock %}
 
-
 {% block body_block %}
-   <div class="box__out-row">
-       <div class="box_out">Sort by:</div>
-           <div class="box_out">
-              <input type="checkbox" id="Budget Code" name="Budget Code">
-              <label for="Budget Code">Budget Code</label>
-           </div>
-           <div class="box_out">
-              <input type="checkbox" id="Worker" name="Worker">
-              <label for="Worker">Worker</label>
-           </div>
-       </div>
-   </div>
-
+<div class="box">
+    <div class="box__order-by">
+        <div class="box__order-by__text">Sort by:</div>
+        <div class="box__order-by__element">
+            <a class="box__order-by__element_link" href="{% url 'databank_system:all_billings' 'date' %}">Date</a>
+        </div>
+        <div class="box__order-by__element">
+            <a class="box__order-by__element_link" href="{% url 'databank_system:all_billings' 'budget_code' %}">Budget
+                Code</a>
+        </div>
+        <div class="box__order-by__element">
+            <a class="box__order-by__element_link" href="{% url 'databank_system:all_billings' 'worker' %}">Worker</a>
+        </div>
+    </div>
 
     {% if billings %}
+    {% for billing in billings %}
+    <div class="box__single-billing">
+        <div class="box__single-billing__element">
+            <div class="box__single-billing__element-upper">Project number</div>
+            <div class="box__single-billing__element-lower">{{billing.project}}</div>
+        </div>
 
-    
-        
-        {% for billing in billings %}
-            
-            
-        <br>   
-          
-            <div class="box__wrap">
-                   
-                <form class="box__form">
-                        
-                        <div class="box__row">
-                            <!--Placeholder UI-->      
-                            <div class="box__row__element">
-                                Date: {{billing.Date}}   
-                            </div>
-                            <div class="box__row__element">
-                                Worker: {{billing.Worker}}   
-                            </div>
-                            <div class="box__row__element">
-                                Budget Code: {{billing.BudgetCode}}
-                            </div>
-                            <div class="box__row__element">
-                                Project No: {{billing.Project}}
-                            </div>
-                            <div class="box__row__element">
-                                Unit: {{billing.Unit}}
-                            </div>
-                            <div class="box__row__element">
-                                Cost: £{{billing.Cost}}
-                            </div>
-                        </div>
+        <div class="box__single-billing__element">
+            <div class="box__single-billing__element-upper">Budget code</div>
+            <div class="box__single-billing__element-lower">{{billing.budget_code}}</div>
+        </div>
 
-                        
-                            
-                        
-                </form>
-            </div>
-            
-        {% endfor %}
+        <div class="box__single-billing__element">
+            <div class="box__single-billing__element-upper">Worker</div>
+            <div class="box__single-billing__element-lower">{{billing.worker}}</div>
+        </div>
+
+        <div class="box__single-billing__buttons">
+            <a class="box__single-billing__buttons-first" href="{% url 'databank_system:single_billing' billing.id %}">View</a>
+            <a href="">Edit</a>
+        </div>
+    </div>
+    {% endfor %}
     {% else %}
-        <div> There are no billings present.</div>
+    <div class="box__no-elements"> There are no billings present.</div>
     {% endif %}
+</div>
 {% endblock %}

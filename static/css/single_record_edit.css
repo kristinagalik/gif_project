@@ -1,6 +1,6 @@
 .box__wrap {
     width: 50%;
-    height: 600px;
+    height: 1750px;
     box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
@@ -10,6 +10,8 @@
     background-color: #f4f4f4;
     padding: 30px;
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
 }
 
 .box__header {
@@ -19,7 +21,11 @@
     line-height: 56px;
 }
 
-.box__input-row {
+.box__form {
+    height: 100%;
+}
+
+.box__single-record {
     margin-top: 30px;
     display: flex;
 }
@@ -32,7 +38,7 @@
     -o-appearance: none;
     appearance: none;
     height: 30px;
-    width: 300%;
+    width: 1200px;
     background: #ECEBEB;
     border: 1px solid #B5B5B5;
     box-sizing: border-box;
@@ -53,13 +59,7 @@
     margin-top: 30px;
 }
 
-.btnBox {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 50px;
-}
-
-.box__button-wrapper {
+.box__single-record__button {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -81,14 +81,3 @@
     background-color: #1a74b0;
 }
 
-.box__form {
-    height: 100%;
-}
-
-.nav-item__new-billing {
-   background-color: #177DC0;
-}
-
-#nav-item__new-billing {
-   color: #f4f4f4;
-}

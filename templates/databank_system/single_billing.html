@@ -1,0 +1,58 @@
+<!-- Single Billing Page -->
+
+{% extends 'databank_system/base.html' %}
+<!--{% load static %}-->
+
+{% block title_block %}
+<link rel="stylesheet" href="{% static 'css/single_billing.css' %}">
+{% endblock %}
+
+{% block body_block %}
+<div class="box">
+    {% if billing %}
+    <div class="box__wrap">
+        <div class="box__single-billing">
+            <div class="box__header">
+                Billing
+            </div>
+            <div class="box__single-billing__element">
+                <div>Date:</div>
+                <div>{{ billing.date }}</div>
+            </div>
+            <div class="box__single-billing__element">
+                <div>Worker:</div>
+                <div>{{ billing.worker }}</div>
+            </div>
+            <div class="box__single-billing__element">
+                <div>Budget Code:</div>
+                <div>{{ billing.budget_code }}</div>
+            </div>
+            <div class="box__single-billing__element">
+                <div>Project number:</div>
+                <div>{{ billing.project }}</div>
+            </div>
+            <div class="box__single-billing__element">
+                <div>Unit:</div>
+                <div>{{ billing.unit }}</div>
+            </div>
+            <div class="box__single-billing__element">
+                <div>Cost (£):</div>
+                <div>{{ billing.cost }}</div>
+            </div>
+        </div>
+        <div class="box__single-billing__buttons">
+            <a class="box__single-billing__button"
+               href="">
+                <div class="text-inside-button">Edit</div>
+            </a>
+            <form action="{% url 'databank_system:delete_billing' billing.id %}" method="POST">
+                {% csrf_token %}
+                <button class="box__single-billing__button">Delete</button>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="box__no-element">This billing doesn't exist.</div>
+    {% endif %}
+</div>
+{% endblock %}
