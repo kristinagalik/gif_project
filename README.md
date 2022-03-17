@@ -31,11 +31,15 @@ ALLOWED_HOSTS = []
 python manage.py makemigrations databank_system
 python manage.py migrate
 ```
-6. (OPTIONAL) To create a superuser, run:
+6. (OPTIONAL) To populate with example data, run:
+```
+python populate_databank_system.py
+```
+7. (OPTIONAL) To create a superuser, run:
 ```
 python manage.py createsuperuser
 ```
-7. To run the app locally, run:
+8. To run the app locally, run:
 ```
 python manage.py runserver
 ```
