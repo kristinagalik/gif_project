@@ -28,7 +28,6 @@ ALLOWED_HOSTS = []
 ```
 5. (OPTIONAL) To create/apply migrations, run:
 ```
-python manage.py migrate
 python manage.py makemigrations databank_system
 python manage.py migrate
 ```
