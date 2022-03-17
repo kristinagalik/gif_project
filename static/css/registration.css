@@ -1,6 +1,6 @@
 .box__wrap {
   width: 50%;
-  height: 1700px;
+  height: 380px;
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
@@ -17,11 +17,6 @@
   height: 52px;
   font-size: 48px;
   line-height: 56px;
-}
-
-.box__input-row {
-  margin-top: 30px;
-  display: flex;
 }
 
 .box__input {
@@ -50,7 +45,7 @@
 .box__input-row__element {
   display: flex;
   margin-right: 30px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .box__button-wrapper {
@@ -79,29 +74,45 @@
   height: 100%;
 }
 
-.nav-item__new-record {
+.nav-item__registration {
   background-color: #177DC0;
 }
 
-#nav-item__new-record {
+#nav-item__registration {
   color: #f7f7f7;
+}
+
+.registration__red-text {
+  pointer-events: none;
+  padding-top: 10px;
+  margin-left: 175px;
+  color: #f7f7f7;
+  font-size: 16px;
+}
+
+.red {
+  color: red
+}
+
+#user_form {
+  padding-top: 20px;
 }
 
 @media only screen and (max-device-width: 1000px) {
   .box__wrap {
     width: 90%;
-    height: 2910px;
+    height: 500px;
     margin-top: 5%;
+    margin-bottom: 2%;
   }
   .box__header {
     font-size: 56px;
-    padding-bottom: 20px;
   }
   .box__input {
     height: 80px;
-    font-size: 24px;
+    width: 400%;
     padding-left: 20px;
-    padding-right: 20px;
+    font-size: 24px;
   }
   .box__input-row__element-text {
     font-size: 24px;
@@ -109,6 +120,10 @@
   .box__button {
     width: 450px;
     height: 80px;
+    font-size: 24px;
+  }
+  .registration__red-text {
+    margin-left: 145px;
     font-size: 24px;
   }
 }
@@ -116,18 +131,18 @@
 @media only screen and (max-width: 1000px) {
   .box__wrap {
     width: 90%;
-    height: 2910px;
+    height: 500px;
     margin-top: 5%;
+    margin-bottom: 2%;
   }
   .box__header {
     font-size: 56px;
-    padding-bottom: 20px;
   }
   .box__input {
     height: 80px;
-    font-size: 24px;
+    width: 400%;
     padding-left: 20px;
-    padding-right: 20px;
+    font-size: 24px;
   }
   .box__input-row__element-text {
     font-size: 24px;
@@ -135,6 +150,10 @@
   .box__button {
     width: 450px;
     height: 80px;
+    font-size: 24px;
+  }
+  .registration__red-text {
+    margin-left: 145px;
     font-size: 24px;
   }
 }

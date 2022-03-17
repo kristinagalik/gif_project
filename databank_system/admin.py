@@ -1,8 +1,10 @@
+from databank_system.models import Billing, Record
 from django.contrib import admin
-from databank_system.models import UserInfo, Billing, Record
 
 
-admin.site.register(UserInfo)
+"""
+    registering Billing, Record to the admin interface
+"""
 
 
 class BillingAdmin(admin.ModelAdmin):
@@ -13,10 +15,11 @@ admin.site.register(Billing, BillingAdmin)
 
 
 class RecordAdmin(admin.ModelAdmin):
-    list_display = ('date', 'worker', 'project', 'budget_code', 'email', 'contact_tel_no', 'procedure', 'chemical_fixation',
-                    'negstaining', 'cryofixation', 'tem_embedding_schedule', 'sem', 'dehydration', 'sem_mount', 'fd', 'cpd',
-                    'resin', 'sem_cost', 'temp_time', 'immunolabeling', 'ab_dilution_time', 'ab_gold_dilution_time',
-                    'contrast_staining', 'comment')
+    list_display = (
+        'date', 'worker', 'project', 'budget_code', 'email', 'contact_tel_no', 'procedure', 'chemical_fixation',
+        'negstaining', 'cryofixation', 'tem_embedding_schedule', 'sem', 'dehydration', 'sem_mount', 'fd', 'cpd',
+        'resin', 'sem_cost', 'temp_time', 'immunolabeling', 'ab_dilution_time', 'ab_gold_dilution_time',
+        'contrast_staining', 'comment')
 
 
 admin.site.register(Record, RecordAdmin)

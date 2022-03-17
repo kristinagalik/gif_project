@@ -1,0 +1,27 @@
+image: python:3
+
+stages:
+  - test
+
+before_script:
+  - apt update
+  - apt install -y python3 python3-pip
+  - pip3 install -r requirements.txt
+  - python3 manage.py makemigrations databank_system
+  - python3 manage.py migrate
+
+test:
+  stage: test
+  tags:
+    - docker
+  script:
+    - python3 manage.py test
+    - pip install coverage
+    - coverage run manage.py test
+    - coverage report
+    - coverage xml
+  artifacts:
+    paths:
+    - ./coverage.xml
+    reports:
+      cobertura: ./coverage.xml

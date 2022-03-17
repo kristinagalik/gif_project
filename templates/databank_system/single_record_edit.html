@@ -1,126 +1,128 @@
 <!-- Single Record Edit Page -->
 
+<!--This page allows users edit existing record-->
+
 {% extends 'databank_system/base.html' %}
-<!--{% load static %}-->
+{% load static %}
 
 {% block title_block %}
 <link rel="stylesheet" href="{% static 'css/single_record_edit.css' %}">
 {% endblock %}
 
 {% block body_block %}
-{% if record %}
-<div class="box__wrap">
-    <form class="box__form" method="post" action="{% url 'databank_system:single_record_edit' record.id %}">
-        {% csrf_token %}
-
-        <div class="box__header">Edit Record</div>
-
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">Date (d/m/y):</div>
-            <input class="box__input" type="date" name="date">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">Worker:</div>
-            <input class="box__input" type="text" name="Worker" value="{{record.worker}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">Project number:</div>
-            <input class="box__input" type="text" name="Project number" value="{{record.project}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">Budget code:</div>
-            <input class="box__input" type="text" name="Budget code" value="{{record.budget_code}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">Email:</div>
-            <input class="box__input" type="Email" name="Email" value="{{record.email}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">Contact tel. number:</div>
-            <input class="box__input" type="text" name="Contact tel. number" value="{{record.contact_tel_no}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">Specimen/Procedure:</div>
-            <input class="box__input" type="text" name="Specimen/Procedure" value="{{record.procedure}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">Chemical fixation:</div>
-            <input class="box__input" type="text" name="Chemical fixation" value="{{record.chemical_fixation}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">Neg staining:</div>
-            <input class="box__input" type="text" name="Neg staining" value="{{record.negstaining}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">Cryofixation:</div>
-            <input class="box__input" type="text" name="Cryofixation" value="{{record.cryofixation}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">TEM embedding schedule:</div>
-            <input class="box__input" type="text" name="TEM embedding schedule"
-                   value="{{record.tem_embedding_schedule}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">SEM:</div>
-            <input class="box__input" type="text" name="SEM" value="{{record.sem}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">Dehydration:</div>
-            <input class="box__input" type="text" name="Dehydration" value="{{record.dehydration}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">SEM mount:</div>
-            <input class="box__input" type="text" name="SEM mount" value="{{record.sem_mount}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">FD:</div>
-            <input class="box__input" type="text" name="FD" value="{{record.fd}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">CPD:</div>
-            <input class="box__input" type="text" name="CPD" value="{{record.cpd}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">Resin:</div>
-            <input class="box__input" type="text" name="Resin" value="{{record.resin}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">SEM cost:</div>
-            <input class="box__input" type="text" name="SEM cost" value="{{record.sem_cost}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">Temp/Time:</div>
-            <input class="box__input" type="text" name="Temp/Time" value="{{record.temp_time}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">Immunolabeling:</div>
-            <input class="box__input" type="text" name="Immunolabeling" value="{{record.immunolabeling}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">1° Ab/dilution/time:</div>
-            <input class="box__input" type="text" name="1° Ab/dilution/time" value="{{record.ab_dilution_time}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">2° Ab-gold/dilution/time:</div>
-            <input class="box__input" type="text" name="2° Ab-gold/dilution/time"
-                   value="{{record.ab_gold_dilution_time}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">Contrast staining:</div>
-            <input class="box__input" type="text" name="Contrast staining" value="{{record.contrast_staining}}">
-        </div>
-        <div class="box__input-row__element">
-            <div class="box__input-row__element-text">Comment/Results:</div>
-            <input class="box__input" type="text" name="Comment/Results" value="{{record.comment}}">
-        </div>
-        <div class="box__single-record__buttons">
-            <div class="box__single-record__button">
-                <input class="box__button" type="submit" value="Save">
+<div class="box">
+    {% if record %}
+    <div class="box__wrap">
+        <form class="box__form" method="post" action="{% url 'databank_system:single_record_edit' record.id %}">
+            {% csrf_token %}
+            <div class="box__header">Edit Record</div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">Date (d/m/y):</div>
+                <input class="box__input" type="date" name="date" value="{{record.date|date:"Y-m-d" }}">
             </div>
-        </div>
-    </form>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">Worker:</div>
+                <input class="box__input" type="text" name="worker" value="{{record.worker}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">Project number:</div>
+                <input class="box__input" type="number" name="project" value="{{record.project}}" required>
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">Budget code:</div>
+                <input class="box__input" type="text" name="budget_code" value="{{record.budget_code}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">Email:</div>
+                <input class="box__input" type="Email" name="email" value="{{record.email}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">Contact tel. number:</div>
+                <input class="box__input" type="text" name="contact_tel_no" value="{{record.contact_tel_no}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">Specimen / Procedure:</div>
+                <input class="box__input" type="text" name="procedure" value="{{record.procedure}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">Chemical fixation:</div>
+                <input class="box__input" type="text" name="chemical_fixation" value="{{record.chemical_fixation}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">Neg staining:</div>
+                <input class="box__input" type="text" name="negstaining" value="{{record.negstaining}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">Cryofixation:</div>
+                <input class="box__input" type="text" name="cryofixation" value="{{record.cryofixation}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">TEM embedding schedule:</div>
+                <input class="box__input" type="text" name="tem_embedding_schedule"
+                    value="{{record.tem_embedding_schedule}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">SEM:</div>
+                <input class="box__input" type="text" name="sem" value="{{record.sem}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">Dehydration:</div>
+                <input class="box__input" type="text" name="dehydration" value="{{record.dehydration}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">SEM mount:</div>
+                <input class="box__input" type="text" name="sem_mount" value="{{record.sem_mount}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">FD:</div>
+                <input class="box__input" type="text" name="fd" value="{{record.fd}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">CPD:</div>
+                <input class="box__input" type="text" name="cpd" value="{{record.cpd}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">Resin:</div>
+                <input class="box__input" type="text" name="resin" value="{{record.resin}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">SEM cost:</div>
+                <input class="box__input" type="text" name="sem_cost" value="{{record.sem_cost}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">Temp / Time:</div>
+                <input class="box__input" type="text" name="temp_time" value="{{record.temp_time}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">Immunolabeling:</div>
+                <input class="box__input" type="text" name="immunolabeling" value="{{record.immunolabeling}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">1° Ab / dilution / time:</div>
+                <input class="box__input" type="text" name="ab_dilution_time" value="{{record.ab_dilution_time}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">2° Ab-gold / dilution / time:</div>
+                <input class="box__input" type="text" name="ab_gold_dilution_time"
+                    value="{{record.ab_gold_dilution_time}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">Contrast staining:</div>
+                <input class="box__input" type="text" name="contrast_staining" value="{{record.contrast_staining}}">
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text">Comment / Results:</div>
+                <input class="box__input" type="text" name="comment" value="{{record.comment}}">
+            </div>
+            <div class="box__single-record__buttons">
+                <div class="box__single-record__button">
+                    <input class="box__button" type="submit" value="Save">
+                </div>
+            </div>
+        </form>
+    </div>
+    {% else %}
+    <div class="box__no-element">This record doesn't exist.</div>
+    {% endif %}
 </div>
-
-{% endif %}
-
 {% endblock %}

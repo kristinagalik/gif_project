@@ -1,5 +1,7 @@
 <!-- All Records Page -->
 
+<!--This page lists all the records present, chronologically from the most recent, to the oldest-->
+
 {% extends 'databank_system/base.html' %}
 {% load static %}
 
@@ -10,40 +12,37 @@
 {% block body_block %}
 <div class="box">
     <div class="box__order-by">
-        <div class="box__order-by__text">Sort by:</div>
+        <div class="box__order-by__text">Order by:</div>
         <div class="box__order-by__element">
             <a class="box__order-by__element_link" href="{% url 'databank_system:all_records' 'date' %}">Date</a>
         </div>
         <div class="box__order-by__element">
             <a class="box__order-by__element_link" href="{% url 'databank_system:all_records' 'project' %}">Project
-                No.</a>
+            No.</a>
         </div>
         <div class="box__order-by__element">
             <a class="box__order-by__element_link" href="{% url 'databank_system:all_records' 'worker' %}">Worker</a>
         </div>
     </div>
-
     {% if records %}
     {% for record in records %}
     <div class="box__single-record">
+        <div class="box__single-record__element box__single-record__element-date">
+            <div class="box__single-record__element-upper">Date</div>
+            <div class="box__single-record__element-lower">{{record.date}}</div>
+        </div>
         <div class="box__single-record__element">
             <div class="box__single-record__element-upper">Project number</div>
             <div class="box__single-record__element-lower">{{record.project}}</div>
         </div>
-
-        <div class="box__single-record__element">
-            <div class="box__single-record__element-upper">Date</div>
-            <div class="box__single-record__element-lower">{{record.date}}</div>
-        </div>
-
         <div class="box__single-record__element">
             <div class="box__single-record__element-upper">Worker</div>
             <div class="box__single-record__element-lower">{{record.worker}}</div>
         </div>
-
         <div class="box__single-record__buttons">
-            <a class="box__single-record__buttons-first" href="{% url 'databank_system:single_record' record.id %}">View</a>
-            <a href="">Edit</a>
+            <a class="box__single-record__buttons-first"
+                href="{% url 'databank_system:single_record' record.id %}">View</a>
+            <a href="{% url 'databank_system:single_record_edit' record.id %}">Edit</a>
         </div>
     </div>
     {% endfor %}

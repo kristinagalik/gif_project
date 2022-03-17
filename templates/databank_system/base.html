@@ -1,40 +1,64 @@
+<!--Base html file, form which all other html files extend-->
+
 <!DOCTYPE html>
 {% load static %}
-
 <html lang="en">
-
     <head>
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        <script src="{% static 'js/menu_bar.js' %}"></script>
         {% block title_block %}{% endblock %}
     </head>
-
     <body>
         <header>
             <nav>
-
-                <!-- MENU -->
-
+                <!-- Menu navigation -->
                 {% if user.is_authenticated %}
-
                 <div class="nav">
                     <ul>
                         <img class="nav-logo" src="{% static 'images/logo.png' %}" alt="GIF Logo">
                         <div class="links">
-                            <li class="nav-item nav-item__home-page"><a class="nav-link" id="nav-item__home-page" href="{% url 'databank_system:home_page' %}">Home Page</a></li>
-                            <li class="nav-item nav-item__all-records"><a class="nav-link" id="nav-item__all-records" href="{% url 'databank_system:all_records' 'date' %}">All Records</a></li>
-                            <li class="nav-item nav-item__new-record"><a class="nav-link" id="nav-item__new-record" href="{% url 'databank_system:new_record' %}">New Record</a></li>
-                            <li class="nav-item nav-item__all-billings"><a class="nav-link" id="nav-item__all-billings" href="{% url 'databank_system:all_billings' 'date' %}">All Billings</a></li>
-                            <li class="nav-item nav-item__new-billing"><a class="nav-link" id="nav-item__new-billing" href="{% url 'databank_system:new_billing' %}">New Billing</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'databank_system:user_logout' %}">Log Out</a></li>
+                            <li class="nav-item nav-item__home-page"><a class="nav-link" id="nav-item__home-page"
+                                href="{% url 'databank_system:home_page' %}">Home
+                                Page</a>
+                            </li>
+                            <li class="nav-item nav-item__all-records"><a class="nav-link" id="nav-item__all-records"
+                                href="{% url 'databank_system:all_records' 'date' %}">All
+                                Records</a>
+                            </li>
+                            <li class="nav-item nav-item__new-record"><a class="nav-link" id="nav-item__new-record"
+                                href="{% url 'databank_system:new_record' %}">New
+                                Record</a>
+                            </li>
+                            <li class="nav-item nav-item__all-billings"><a class="nav-link" id="nav-item__all-billings"
+                                href="{% url 'databank_system:all_billings' 'date' %}">All
+                                Billings</a>
+                            </li>
+                            <li class="nav-item nav-item__new-billing"><a class="nav-link" id="nav-item__new-billing"
+                                href="{% url 'databank_system:new_billing' %}">New
+                                Billing</a>
+                            </li>
+                            <li class="nav-item nav-item__users"><a class="nav-link" id="nav-item__users"
+                                href="{% url 'databank_system:users' %}">All Users</a></li>
+                            <li class="nav-item nav-item__registration"><a class="nav-link" id="nav-item__registration"
+                                href="{% url 'databank_system:registration' %}">New
+                                User</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'databank_system:user_logout' %}">Log Out</a>
+                            </li>
                         </div>
                     </ul>
                 </div>
-
-                {% endif %}
             </nav>
+            <!-- Mobile menu navigation -->
+            <div id="mobile-nav">
+                <div class="mobile-nav__container">
+                    <img class="mobile-nav-logo" src="{% static 'images/logo.png' %}" alt="GIF Logo">
+                    <a class="nav-link" href="{% url 'databank_system:mobile_menu' %}">Navigation Page</a>
+                </div>
+            </div>
+            {% endif %}
         </header>
         {% block body_block %}{% endblock %}
     </body>
-
 </html>

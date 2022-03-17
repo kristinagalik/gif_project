@@ -1,17 +1,14 @@
-
 <!-- Login Page -->
 
 {% extends 'databank_system/base.html' %}
 {% load static %}
 
 {% block title_block %}
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
 {% endblock %}
 
 {% block body_block %}
-
 <div class="login-background">
     <div class="login-box">
         <div class="login-box__logo-background-blue">
@@ -21,13 +18,11 @@
         </div>
         <div class="login-box__wrap">
             <form id="login_form" method="post" action="{% url 'databank_system:user_login' %}">
-
                 {% csrf_token %}
-
-                <div class="login-box__input-box">
+                <div class="login-box__input-box login-box__input-box__username">
                     <div class="login-box__img-background">
                         <div class="login-box__img">
-                            <span class="iconify" data-icon="carbon:user-filled" style="color: #f8f8f8; font-size: 42px;"></span>
+                            <span class="iconify" data-icon="carbon:user-filled"></span>
                         </div>
                     </div>
                     <div class="login-box__input-wrap">
@@ -37,7 +32,7 @@
                 <div class="login-box__input-box login-box__input-box__password">
                     <div class="login-box__img-background">
                         <div class="login-box__img">
-                            <span class="iconify" data-icon="bi:key-fill" style="color: #f8f8f8; font-size: 42px;"></span>
+                            <span class="iconify" data-icon="bi:key-fill"></span>
                         </div>
                     </div>
                     <div class="login-box__input-wrap">
@@ -54,5 +49,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

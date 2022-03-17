@@ -1,5 +1,7 @@
 <!-- All Billings Page -->
 
+<!--This page lists all the billings present, chronologically from the most recent, to the oldest-->
+
 {% extends 'databank_system/base.html' %}
 {% load static %}
 
@@ -10,40 +12,36 @@
 {% block body_block %}
 <div class="box">
     <div class="box__order-by">
-        <div class="box__order-by__text">Sort by:</div>
+        <div class="box__order-by__text">Order by:</div>
         <div class="box__order-by__element">
             <a class="box__order-by__element_link" href="{% url 'databank_system:all_billings' 'date' %}">Date</a>
         </div>
         <div class="box__order-by__element">
-            <a class="box__order-by__element_link" href="{% url 'databank_system:all_billings' 'budget_code' %}">Budget
-                Code</a>
+            <a class="box__order-by__element_link" href="{% url 'databank_system:all_billings' 'project' %}">Project
+            No.</a>
         </div>
         <div class="box__order-by__element">
             <a class="box__order-by__element_link" href="{% url 'databank_system:all_billings' 'worker' %}">Worker</a>
         </div>
     </div>
-
     {% if billings %}
     {% for billing in billings %}
     <div class="box__single-billing">
+        <div class="box__single-billing__element box__single-billing__element-date">
+            <div class="box__single-billing__element-upper">Date</div>
+            <div class="box__single-billing__element-lower">{{billing.date}}</div>
+        </div>
         <div class="box__single-billing__element">
             <div class="box__single-billing__element-upper">Project number</div>
             <div class="box__single-billing__element-lower">{{billing.project}}</div>
         </div>
-
-        <div class="box__single-billing__element">
-            <div class="box__single-billing__element-upper">Budget code</div>
-            <div class="box__single-billing__element-lower">{{billing.budget_code}}</div>
-        </div>
-
         <div class="box__single-billing__element">
             <div class="box__single-billing__element-upper">Worker</div>
             <div class="box__single-billing__element-lower">{{billing.worker}}</div>
         </div>
-
         <div class="box__single-billing__buttons">
             <a class="box__single-billing__buttons-first" href="{% url 'databank_system:single_billing' billing.id %}">View</a>
-            <a href="">Edit</a>
+            <a href="{% url 'databank_system:single_billing_edit' billing.id %}">Edit</a>
         </div>
     </div>
     {% endfor %}

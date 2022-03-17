@@ -1,0 +1,56 @@
+<!-- Mobile menu navigation page -->
+
+{% extends 'databank_system/base.html' %}
+{% load static %}
+{% load template_tags %}
+
+{% block title_block %}
+<link rel="stylesheet" href="{% static 'css/mobile_menu.css' %}">
+{% endblock %}
+
+{% block body_block %}
+<div class="box">
+    <div class="links">
+        <ul>
+            <div class="box__single-element">
+                <li class="nav-item nav-item__home-page"><a class="nav-link" id="nav-item__home-page"
+                    href="{% url 'databank_system:home_page' %}">Home Page</a>
+                </li>
+            </div>
+            <div class="box__single-element">
+                <li class="nav-item nav-item__all-records"><a class="nav-link" id="nav-item__all-records"
+                    href="{% url 'databank_system:all_records' 'date' %}">All Records</a>
+                </li>
+            </div>
+            <div class="box__single-element">
+                <li class="nav-item nav-item__new-record"><a class="nav-link" id="nav-item__new-record"
+                    href="{% url 'databank_system:new_record' %}">New Record</a>
+                </li>
+            </div>
+            <div class="box__single-element">
+                <li class="nav-item nav-item__all-billings"><a class="nav-link" id="nav-item__all-billings"
+                    href="{% url 'databank_system:all_billings' 'date' %}">All Billings</a>
+                </li>
+            </div>
+            <div class="box__single-element">
+                <li class="nav-item nav-item__new-billing"><a class="nav-link" id="nav-item__new-billing"
+                    href="{% url 'databank_system:new_billing' %}">New Billing</a>
+                </li>
+            </div>
+            <div class="box__single-element">
+                <li class="nav-item nav-item__users"><a class="nav-link" id="nav-item__users"
+                    href="{% url 'databank_system:users' %}">All Users</a></li>
+            </div>
+            <div class="box__single-element">
+                <li class="nav-item nav-item__registration"><a class="nav-link" id="nav-item__registration"
+                    href="{% url 'databank_system:registration' %}">New User</a>
+                </li>
+            </div>
+            <div class="box__single-element">
+                <li class="nav-item"><a class="nav-link" href="{% url 'databank_system:user_logout' %}">Log Out</a>
+                </li>
+            </div>
+        </ul>
+    </div>
+</div>
+{% endblock %}

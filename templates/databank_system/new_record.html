@@ -1,145 +1,118 @@
-
 <!-- New Record Page -->
+
+<!--On this page, users can create new Record model instance-->
 
 {% extends 'databank_system/base.html' %}
 {% load static %}
 
-
 {% block title_block %}
-     <link rel="stylesheet" href="{% static 'css/new_record.css' %}">
+<link rel="stylesheet" href="{% static 'css/new_record.css' %}">
 {% endblock %}
 
 {% block body_block %}
-    <div class="box__wrap">
-        <form class="box__form" method="post" action="{% url 'databank_system:new_record' %}">
-
-            {% csrf_token %}
-
-            <div class="box__header">New Record</div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> Date (d/m/y): </div>
-                <input class="box__input" type="date" name="date">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> Worker: </div>
-                <input class="box__input" type="text" name="worker">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> Project number: </div>
-                <input class="box__input" type="text" name="project">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> Budget code: </div>
-                <input class="box__input" type="text" name="budget_code">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> Email: </div>
-                <input class="box__input" type="text" name="email">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> Contact tel. number: </div>
-                <input class="box__input" type="text" name="contact_tel_no">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> Specimen/Procedure: </div>
-                <input class="box__input" type="text" name="procedure">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> Chemical fixation: </div>
-                <input class="box__input" type="text" name="chemical_fixation">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text">  Neg staining: </div>
-                <input class="box__input" type="text" name="negstaining">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> Cryofixation: </div>
-                <input class="box__input" type="text" name="cryofixation">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> TEM embedding schedule: </div>
-                <input class="box__input" type="text" name="tem_embedding_schedule">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> SEM: </div>
-                <input class="box__input" type="text" name="sem">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> Dehydration: </div>
-                <input class="box__input" type="text" name="dehydration">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> SEM mount: </div>
-                <input class="box__input" type="text" name="sem_mount">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> FD: </div>
-                <input class="box__input" type="text" name="fd">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> CPD: </div>
-                <input class="box__input" type="text" name="cpd">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> Resin: </div>
-                <input class="box__input" type="text" name="resin">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> SEM cost: </div>
-                <input class="box__input" type="text" name="sem_cost">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> Temp/Time: </div>
-                <input class="box__input" type="text" name="temp_time">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text"> Immunolabeling: </div>
-                <input class="box__input" type="text" name="immunolabeling">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text">  1° Ab/dilution/time: </div>
-                <input class="box__input" type="text" name="ab_dilution_time">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text">  2° Ab-gold/dilution/time: </div>
-                <input class="box__input" type="text" name="ab_gold_dilution_time">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text">  Contrast staining: </div>
-                <input class="box__input" type="text" name="contrast_staining">
-            </div>
-
-            <div class="box__input-row__element">
-                <div class="box__input-row__element-text">  Comment/Results: </div>
-                <input class="box__input comment-input" type="text" name="comment">
-            </div>
-
-            <div class="box__button-wrapper">
-                <input class="box__button" type="submit" value="Submit">
-            </div>
-        </form>
-    </div>
+<div class="box__wrap">
+    <form class="box__form" method="post" action="{% url 'databank_system:new_record' %}">
+        {% csrf_token %}
+        <div class="box__header">New Record</div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> Date (d/m/y): </div>
+            <input class="box__input" type="date" required name="date">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> Worker: </div>
+            <input class="box__input" type="text" name="worker">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> Project number: </div>
+            <input class="box__input" type="number" name="project" required>
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> Budget code: </div>
+            <input class="box__input" type="text" name="budget_code">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> Email: </div>
+            <input class="box__input" type="email" name="email">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> Contact tel. number: </div>
+            <input class="box__input" type="text" name="contact_tel_no">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> Specimen / Procedure: </div>
+            <input class="box__input" type="text" name="procedure">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> Chemical fixation: </div>
+            <input class="box__input" type="text" name="chemical_fixation">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text">  Neg staining: </div>
+            <input class="box__input" type="text" name="negstaining">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> Cryofixation: </div>
+            <input class="box__input" type="text" name="cryofixation">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> TEM embedding schedule: </div>
+            <input class="box__input" type="text" name="tem_embedding_schedule">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> SEM: </div>
+            <input class="box__input" type="text" name="sem">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> Dehydration: </div>
+            <input class="box__input" type="text" name="dehydration">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> SEM mount: </div>
+            <input class="box__input" type="text" name="sem_mount">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> FD: </div>
+            <input class="box__input" type="text" name="fd">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> CPD: </div>
+            <input class="box__input" type="text" name="cpd">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> Resin: </div>
+            <input class="box__input" type="text" name="resin">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> SEM cost: </div>
+            <input class="box__input" type="text" name="sem_cost">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> Temp/Time: </div>
+            <input class="box__input" type="text" name="temp_time">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text"> Immunolabeling: </div>
+            <input class="box__input" type="text" name="immunolabeling">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text">  1° Ab / dilution / time: </div>
+            <input class="box__input" type="text" name="ab_dilution_time">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text">  2° Ab-gold / dilution / time: </div>
+            <input class="box__input" type="text" name="ab_gold_dilution_time">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text">  Contrast staining: </div>
+            <input class="box__input" type="text" name="contrast_staining">
+        </div>
+        <div class="box__input-row__element">
+            <div class="box__input-row__element-text">  Comment / Results: </div>
+            <input class="box__input comment-input" type="text" name="comment">
+        </div>
+        <div class="box__button-wrapper">
+            <input class="box__button" type="submit" value="Submit">
+        </div>
+    </form>
+</div>
 {% endblock %}

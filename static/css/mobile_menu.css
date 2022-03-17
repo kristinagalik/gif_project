@@ -1,0 +1,21 @@
+.box {
+  padding: 16px;
+}
+
+.box__single-element {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  margin-top: 16px;
+  bottom: 0;
+  background-color: #f7f7f7;
+  padding: 32px;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 32px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}

@@ -1,18 +1,18 @@
-from django.contrib.auth import authenticate
-from django.test import TestCase, Client
 from databank_system.models import Billing, Record
+from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
+from django.test import TestCase, Client
 
 
 class BillingTestCase(TestCase):
     def setUp(self):
         self.b1 = Billing.objects.create(date='2018-04-15', worker='worker1', budget_code='budget_code1',
-                                         project='project1', unit='unit1', cost='cost1')
+                                         project=1, unit='unit1', cost='cost1')
         self.b1.save()
         self.b2 = Billing.objects.create(date='2017-03-01', worker='worker2', budget_code='budget_code2',
-                                         project='project2', unit='unit2', cost='cost2')
+                                         project=13, unit='unit2', cost='cost2')
         self.b2.save()
-        self.b3 = Billing.objects.create(worker='', budget_code='', project='', unit='', cost='')
+        self.b3 = Billing.objects.create(worker='', budget_code='', project=3, unit='', cost='')
         self.b3.save()
 
     def tearDown(self):
@@ -55,7 +55,7 @@ class RecordTestCase(TestCase):
         self.assertEqual(self.r3.date, self.r2.date)
 
 
-class UserInfoTestCase(TestCase):
+class UserTestCase(TestCase):
     def setUp(self):
         self.user1 = User.objects.create(username='john', email='john@gmail123.com')
         self.user1.set_password("secret_password")
@@ -155,12 +155,12 @@ class AllBillingsViewTestCase(TestCase):
 
     def test_view_url_exists_not_empty(self):
         self.b1 = Billing.objects.create(date='2018-04-15', worker='worker1', budget_code='budget_code1',
-                                         project='project1', unit='unit1', cost='cost1')
+                                         project=432, unit='unit1', cost='cost1')
         self.b1.save()
         self.b2 = Billing.objects.create(date='2017-03-01', worker='worker2', budget_code='budget_code2',
-                                         project='project2', unit='unit2', cost='cost2')
+                                         project=32423, unit='unit2', cost='cost2')
         self.b2.save()
-        self.b3 = Billing.objects.create(worker='', budget_code='', project='', unit='', cost='')
+        self.b3 = Billing.objects.create(worker='', budget_code='', project=100, unit='', cost='')
         self.b3.save()
 
         response = self.client.get('/all_billings/date/')
@@ -257,6 +257,51 @@ class RedirectTestCase(TestCase):
     def test_redirect_logged_in_new_billing(self):
         self.client.login(username='john', password='secret_password')
         response = self.client.get('/new_billing/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_redirect_not_logged_in_register(self):
+        response = self.client.get('/registration/')
+        self.assertRedirects(response, '/login/', status_code=302, target_status_code=200, fetch_redirect_response=True)
+
+    def test_redirect_logged_in_register(self):
+        self.client.login(username='john', password='secret_password')
+        response = self.client.get('/registration/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_redirect_not_logged_in_single_record_edit(self):
+        response = self.client.get('/single_record_edit/1/')
+        self.assertRedirects(response, '/login/', status_code=302, target_status_code=200, fetch_redirect_response=True)
+
+    def test_redirect_logged_in_single_record_edit(self):
+        self.client.login(username='john', password='secret_password')
+        response = self.client.get('/single_record_edit/1/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_redirect_not_logged_in_single_billing_edit(self):
+        response = self.client.get('/single_billing_edit/1/')
+        self.assertRedirects(response, '/login/', status_code=302, target_status_code=200, fetch_redirect_response=True)
+
+    def test_redirect_logged_in_single_billing_edit(self):
+        self.client.login(username='john', password='secret_password')
+        response = self.client.get('/single_billing_edit/1/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_redirect_not_logged_in_single_record(self):
+        response = self.client.get('/single_record/1/')
+        self.assertRedirects(response, '/login/', status_code=302, target_status_code=200, fetch_redirect_response=True)
+
+    def test_redirect_logged_in_single_record(self):
+        self.client.login(username='john', password='secret_password')
+        response = self.client.get('/single_record/1/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_redirect_not_logged_in_single_billing(self):
+        response = self.client.get('/single_billing/5/')
+        self.assertRedirects(response, '/login/', status_code=302, target_status_code=200, fetch_redirect_response=True)
+
+    def test_redirect_logged_in_single_billing(self):
+        self.client.login(username='john', password='secret_password')
+        response = self.client.get('/single_billing/5/')
         self.assertEqual(response.status_code, 200)
 
 

@@ -1,0 +1,36 @@
+<!-- Register new user page -->
+
+{% extends 'databank_system/base.html' %}
+{% load static %}
+
+{% block title_block %}
+<link rel="stylesheet" href="{% static 'css/registration.css' %}">
+{% endblock %}
+
+{% block body_block %}
+<div class="box">
+    <div class="box__wrap">
+        <div class="box__header">
+            New User
+        </div>
+        <form id="user_form" method="post" action="{% url 'databank_system:registration' %}"
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text"> username:</div>
+                <input class="box__input" type="text" placeholder="Username" name="username">
+            </div>
+            <div class="registration__red-text {% if username_already_exists %} red {% endif %} ">
+                User with that username already exists.
+            </div>
+            <div class="box__input-row__element">
+                <div class="box__input-row__element-text"> password:</div>
+                <input class="box__input" type="password" placeholder="Password" name="password">
+            </div>
+            <div class="box__button-wrapper">
+                <input type="submit" name="submit" value="Add User" class="box__button"/>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

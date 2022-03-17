@@ -1,0 +1,34 @@
+<!-- All Users Page -->
+
+<!--This page lists all existing users except users with admin rights-->
+
+{% extends 'databank_system/base.html' %}
+{% load static %}
+
+{% block title_block %}
+<link rel="stylesheet" href="{% static 'css/users.css' %}">
+{% endblock %}
+
+{% block body_block %}
+<div class="box">
+    {% if users %}
+    {% for user in users %}
+    <div class="box__user">
+        <div class="box__user__element">
+            <div class="box__user__element-lower">{{user.username}}</div>
+        </div>
+        <div class="box__user__buttons">
+            <form action="{% url 'databank_system:delete_user' user.username %}" method="POST">
+                {% csrf_token %}
+                <button class="box__user__button"
+                    onclick="return confirm('Are you sure you want to delete this user?');">Delete
+                </button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="box__no-elements"> There are no users present.</div>
+    {% endif %}
+</div>
+{% endblock %}
